@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "name": "Wii",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "C:/devkitPro/bslug/include"
+            ],
+            "defines": [
+                "HW_RVL",
+                "GEKKO",
+                "__wii__"
+            ],
+            "compilerPath": "C:\\devkitPro\\devkitPPC\\bin\\powerpc-eabi-gcc.exe"
+        }
+    ],
+    "version": 4
+}
