@@ -21,16 +21,12 @@ jobs:
         run: | 
           git clone https://github.com/Chadderz121/brainslug-wii
           cd brainslug-wii
-          export DEVKITPRO=/opt/devkitpro
-          export DEVKITPPC=/opt/devkitpro/devkitPPC
-          sudo make install
+          DEVKITPRO=/opt/devkitpro DEVKITPPC=/opt/devkitpro/devkitPPC sudo make install
           cd ..
 
       - name: Compile
         run: |
-          export DEVKITPRO=/opt/devkitpro
-          export DEVKITPPC=/opt/devkitpro/devkitPPC
-          make
+          DEVKITPRO=/opt/devkitpro DEVKITPPC=/opt/devkitpro/devkitPPC make
           cp */bin/*.mod .
 
       - name: Upload binaries
