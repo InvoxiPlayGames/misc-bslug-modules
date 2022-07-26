@@ -21,7 +21,7 @@ jobs:
         run: | 
           git clone https://github.com/Chadderz121/brainslug-wii
           cd brainslug-wii
-          DEVKITPRO=/opt/devkitpro DEVKITPPC=/opt/devkitpro/devkitPPC sudo make install
+          sudo DEVKITPRO=/opt/devkitpro DEVKITPPC=/opt/devkitpro/devkitPPC make install
           cd ..
 
       - name: Compile
