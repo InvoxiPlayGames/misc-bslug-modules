@@ -16,18 +16,20 @@ jobs:
           sudo ./install-devkitpro-pacman
           sudo dkp-pacman -Syu --noconfirm
           sudo dkp-pacman -S wii-dev --noconfirm
-          export DEVKITPRO=/opt/devkitpro
-          export DEVKITPPC=/opt/devkitpro/devkitPPC
 
       - name: Install BrainSlug
         run: | 
           git clone https://github.com/Chadderz121/brainslug-wii
           cd brainslug-wii
+          export DEVKITPRO=/opt/devkitpro
+          export DEVKITPPC=/opt/devkitpro/devkitPPC
           sudo make install
           cd ..
 
       - name: Compile
         run: |
+          export DEVKITPRO=/opt/devkitpro
+          export DEVKITPPC=/opt/devkitpro/devkitPPC
           make
           cp */bin/*.mod .
 
