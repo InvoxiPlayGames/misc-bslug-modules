@@ -6,27 +6,25 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v2
 
-      - name: Set up devkitPPC
-        run: | 
-          wget https://apt.devkitpro.org/install-devkitpro-pacman
-          chmod +x ./install-devkitpro-pacman
-          sudo ./install-devkitpro-pacman
-          sudo dkp-pacman -Syu --noconfirm
-          sudo dkp-pacman -S wii-dev --noconfirm
+    container:
+      image: docker://devkitpro/devkitppc
+      options: --cpus 2
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: Install BrainSlug
         run: | 
           git clone https://github.com/Chadderz121/brainslug-wii
           cd brainslug-wii
-          sudo DEVKITPRO=/opt/devkitpro DEVKITPPC=/opt/devkitpro/devkitPPC make install
+          make install
           cd ..
 
       - name: Compile
         run: |
-          DEVKITPRO=/opt/devkitpro DEVKITPPC=/opt/devkitpro/devkitPPC make
+          make
           cp */bin/*.mod .
 
       - name: Upload binaries
